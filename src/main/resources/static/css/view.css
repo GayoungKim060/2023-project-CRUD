@@ -329,7 +329,6 @@ input {
     display: inline-block;
     position: relative;
     padding-left: 30px;
-    cursor: pointer;
     font-size: 16px;
     color: #666;
 }
@@ -337,7 +336,6 @@ input {
 .radio-container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
 }
 
 .radio-container input:checked ~ .checkmark {
