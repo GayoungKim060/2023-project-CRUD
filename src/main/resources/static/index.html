@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/src/main/resources/static/css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <title>index.html</title>
+</head>
+<body>
+<!-- HEADER -->
+<header class="p-3 text-bg-dark">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <img src="/src/main/resources/static/img/logo-seagull.png" class="logo-seagull"/>
+            HAN Airport
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-light">Sign-up</button>
+        </div>
+    </div>
+</header>
+
+<!-- TABLE -->
+<div class="col-12 col-sm-12 col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h2>Departures</h2>
+            <button type="button" class="btn btn-outline-dark me-2">Add</button>
+        </div>
+        <div class="card-body">
+            <div class="media-list position-relative">
+                <div class="table-responsive" id="project-team-scroll" tabindex="1" style="height: 400px; overflow: scroll; outline: none;">
+                    <table class="table table-hover table-xl mb-0">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th></th>
+                                <th>Airline</th>
+                                <th>Flight</th>
+                                <th>Destination</th>
+                                <th>Time</th>
+                                <th>Gate</th>
+                                <th>New Time</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-truncate">1</td>
+                            <td><img src="/src/main/resources/static/img/logo-koarean.png" alt="koreanAir"/></td>
+                            <td class="text-truncate">
+                                Korean AIR
+                            </td>
+                            <td class="text-truncate">KA 11023</td>
+                            <td class="text-truncate">Beijing</td>
+                            <td class="text-truncate">08:00</td>
+                            <td class="text-truncate">A17</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text boarding">Boarding</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">2</td>
+                            <td><img src="/src/main/resources/static/img/logo-asiana.png" alt="asianaAir"/></td>
+                            <td class="text-truncate">
+                                Asiana AIR
+                            </td>
+                            <td class="text-truncate">AA 21000</td>
+                            <td class="text-truncate">Hanoi</td>
+                            <td class="text-truncate">08:00</td>
+                            <td class="text-truncate">C08</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text boarding">Boarding</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">3</td>
+                            <td><img src="/src/main/resources/static/img/logo-delta.png" alt="deltaAir"/></td>
+                            <td class="text-truncate">
+                                Delta AIR
+                            </td>
+                            <td class="text-truncate">DA 31033</td>
+                            <td class="text-truncate">Los Angeles</td>
+                            <td class="text-truncate">08:07</td>
+                            <td class="text-truncate">A02</td>
+                            <td class="text-truncate">08:10</td>
+                            <td class="text-truncate"><div class="text delayed">Delayed</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">4</td>
+                            <td><img src="/src/main/resources/static/img/logo-koarean.png" alt="koreanAir"/></td>
+                            <td class="text-truncate">
+                                Korean AIR
+                            </td>
+                            <td class="text-truncate">KA 14033</td>
+                            <td class="text-truncate">London</td>
+                            <td class="text-truncate">08:10</td>
+                            <td class="text-truncate">B05</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text boarding">Boarding</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">5</td>
+                            <td><img src="/src/main/resources/static/img/logo-koarean.png" alt="koreanAir"/></td>
+                            <td class="text-truncate">
+                                Korean AIR
+                            </td>
+                            <td class="text-truncate">KA 15023</td>
+                            <td class="text-truncate">New York</td>
+                            <td class="text-truncate">08:16</td>
+                            <td class="text-truncate">A05</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text boarding">Boarding</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">6</td>
+                            <td><img src="/src/main/resources/static/img/logo-qatar.png" alt="qatarAir"/></td>
+                            <td class="text-truncate">
+                                Qatar AIR
+                            </td>
+                            <td class="text-truncate">JA 30023</td>
+                            <td class="text-truncate">Pyongyang</td>
+                            <td class="text-truncate">08:20</td>
+                            <td class="text-truncate">C09</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text cancelled">Cancelled</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">7</td>
+                            <td><img src="/src/main/resources/static/img/logo-koarean.png" alt="deltaAir"/></td>
+                            <td class="text-truncate">
+                                Korean AIR
+                            </td>
+                            <td class="text-truncate">KA 20015</td>
+                            <td class="text-truncate">Roma</td>
+                            <td class="text-truncate">08:22</td>
+                            <td class="text-truncate">A11</td>
+                            <td class="text-truncate">08:25</td>
+                            <td class="text-truncate"><div class="text delayed">Delayed</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">8</td>
+                            <td><img src="/src/main/resources/static/img/logo-delta.png" alt="deltaAir"/></td>
+                            <td class="text-truncate">
+                                Delta AIR
+                            </td>
+                            <td class="text-truncate">DA 10227</td>
+                            <td class="text-truncate">Tokyo</td>
+                            <td class="text-truncate">08:22</td>
+                            <td class="text-truncate">B02</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text scheduled">Scheduled</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">9</td>
+                            <td><img src="/src/main/resources/static/img/logo-asiana.png" alt="asianaAir"/></td>
+                            <td class="text-truncate">
+                                Asiana AIR
+                            </td>
+                            <td class="text-truncate">DA 10227</td>
+                            <td class="text-truncate">Berlin</td>
+                            <td class="text-truncate">08:25</td>
+                            <td class="text-truncate">B07</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text scheduled">Scheduled</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-truncate">10</td>
+                            <td><img src="/src/main/resources/static/img/logo-qatar.png" alt="qatarAir"/></td>
+                            <td class="text-truncate">
+                                Qatar AIR
+                            </td>
+                            <td class="text-truncate">DA 10227</td>
+                            <td class="text-truncate">Tokyo</td>
+                            <td class="text-truncate">08:25</td>
+                            <td class="text-truncate">C01</td>
+                            <td class="text-truncate"></td>
+                            <td class="text-truncate"><div class="text scheduled">Scheduled</div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<!-- FOOTER -->
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top text-bg-dark">
+    <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2023 Company, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+    </ul>
+</footer>
+
+</body>
+</html>
