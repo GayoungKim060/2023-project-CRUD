@@ -274,7 +274,6 @@ h2 {
     text-transform: uppercase;
     font-weight: 700;
     color: #fff;
-    font-family: inherit;
 }
 
 .btn--radius {
@@ -297,21 +296,29 @@ h2 {
     background: #4dae3c;
 }
 
-.btn--blue {
+.btn--blue, .alert-no {
     background: #4272d7;
 }
 
 .btn--blue:hover {
     background: #3868cd;
+    color: #1a1a1a;
 }
 
-.btn--red {
+.btn--red, .alert-confirm{
     background: #ff4b5a;
 }
 
 .btn--red:hover {
     background: #eb3746;
+    color: #1a1a1a;
 }
+
+.btn-alert-wrapper{
+    float: right;
+}
+
+
 
 /* ==========================================================================
    #FORM

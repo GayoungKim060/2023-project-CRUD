@@ -125,7 +125,22 @@
                         </div>
                     </div>
                     <div class="btn-wrapper">
-                        <button class="btn btn--radius-2 btn--red" type="submit">EDIT</button>
+                        <button class="btn btn--radius-2 btn--red" id="liveToastBtn" type="button">EDIT</button>
+                    </div>
+                    <!-- Toast -->
+                    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100"></div>
+                    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                            <div class="toast-header justify-content-center">
+                                <strong>Are you sure to edit ?</strong>
+                            </div>
+                            <div class="toast-body">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='index.html'">Yes</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -144,6 +159,15 @@
             dropdownButton.textContent = selectedValue;
         });
     });
+
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+    if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+            toast.show()
+        })
+    }
 </script>
 </body>
 </html>
