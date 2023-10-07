@@ -25,13 +25,13 @@
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group-desc">
-                                        <input class="input--style-5" type="text" name="first_name" placeholder="ex) Korean">
+                                        <input class="input--style-5" type="text" name="airline" placeholder="ex) Korean" value="Delta">
                                         <label class="label--desc">Airline</label>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group-desc">
-                                        <input class="input--style-5" type="text" name="last_name" placeholder="ex) 11023">
+                                        <input class="input--style-5" type="text" name="flight" placeholder="ex) 11023" value="11234">
                                         <label class="label--desc">Flight</label>
                                     </div>
                                 </div>
@@ -47,12 +47,12 @@
                                         Country
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#" data-value="New York">New York</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="Berlin">Berlin</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="Paris">Paris</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="Roman">Roman</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="Los Angeles">Los Angeles</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="Pyongyang">Pyongyang</a></li>
+                                        <li><a class="dropdown-item" data-value="New York">New York</a></li>
+                                        <li><a class="dropdown-item" data-value="Berlin">Berlin</a></li>
+                                        <li><a class="dropdown-item" data-value="Paris">Paris</a></li>
+                                        <li><a class="dropdown-item" data-value="Roman">Roman</a></li>
+                                        <li><a class="dropdown-item" data-value="Los Angeles">Los Angeles</a></li>
+                                        <li><a class="dropdown-item" data-value="Pyongyang">Pyongyang</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                         <div class="name">Time</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="time">
+                                <input type="time" class="input--style-5" name="time" value="22:22">
                             </div>
                         </div>
                     </div>
@@ -75,9 +75,9 @@
                                         Alphabet
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#" data-value="A">A</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="B">B</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="C">C</a></li>
+                                        <li><a class="dropdown-item" data-value="A">A</a></li>
+                                        <li><a class="dropdown-item" data-value="B">B</a></li>
+                                        <li><a class="dropdown-item" data-value="C">C</a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown">
@@ -85,11 +85,11 @@
                                         Number
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#" data-value="1">1</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="2">2</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="3">3</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="4">4</a></li>
-                                        <li><a class="dropdown-item" href="#" data-value="5">5</a></li>
+                                        <li><a class="dropdown-item" data-value="1">1</a></li>
+                                        <li><a class="dropdown-item" data-value="2">2</a></li>
+                                        <li><a class="dropdown-item" data-value="3">3</a></li>
+                                        <li><a class="dropdown-item" data-value="4">4</a></li>
+                                        <li><a class="dropdown-item" data-value="5">5</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -99,10 +99,11 @@
                         <div class="name">New Time</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="time">
+                                <input type="time" class="input--style-5" name="newTime"/>
                             </div>
                         </div>
                     </div>
+
                     <div class="form-row p-t-20">
                         <label class="label label--block">Remarks</label>
                         <div class="p-t-15">
@@ -169,6 +170,15 @@
             toast.show()
         })
     }
+
+    // Dropdown default value - 데이터 베이스 연결시 추가작업 필요
+    // querySelectorAll은 nodeList 형태로 반환 (VS HTMLElement)
+    window.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.dropdown-toggle').forEach(function(item) {
+            var firstItem = item.nextElementSibling.children[0].firstChild;
+            item.textContent = firstItem.textContent;
+        });
+    });
 </script>
 </body>
 </html>

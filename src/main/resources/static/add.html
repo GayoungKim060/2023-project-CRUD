@@ -18,20 +18,22 @@
                 <h2 class="title">Airline Schedule Registration</h2>
             </div>
             <div class="card-body">
-                <form method="POST">
+<!-- action="index.php" -->
+<!-- method="GET" 방식으로 넘어가는 name, value 확인 -->
+                <form id="form" method="POST" onsubmit="" name="submitForm">
                     <div class="form-row m-b-55">
                         <div class="name">Airline Info</div>
                         <div class="value">
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group-desc">
-                                        <input class="input--style-5" type="text" name="first_name" placeholder="ex) Korean">
+                                        <input class="input--style-5" type="text" id="input-airline" name="airline" placeholder="ex) Korean">
                                         <label class="label--desc">Airline</label>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group-desc">
-                                        <input class="input--style-5" type="text" name="last_name" placeholder="ex) 11023">
+                                        <input class="input--style-5" type="text" id="input-flight" name="flight" placeholder="ex) 11023">
                                         <label class="label--desc">Flight</label>
                                     </div>
                                 </div>
@@ -43,7 +45,7 @@
                         <div class="value">
                             <div class="input-group">
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-country" data-bs-toggle="dropdown" aria-expanded="false">
                                         Country
                                     </button>
                                     <ul class="dropdown-menu">
@@ -62,7 +64,7 @@
                         <div class="name">Time</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="time">
+                                <input type="time" class="input--style-5" id="input-time" name="time" value="10:01 AM"/>
                             </div>
                         </div>
                     </div>
@@ -71,7 +73,7 @@
                         <div class="value">
                             <div class="input-group">
                                 <div class="dropdown m-r-55">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-alphabet" data-bs-toggle="dropdown" aria-expanded="false">
                                         Alphabet
                                     </button>
                                     <ul class="dropdown-menu">
@@ -81,7 +83,7 @@
                                     </ul>
                                 </div>
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-number" data-bs-toggle="dropdown" aria-expanded="false">
                                         Number
                                     </button>
                                     <ul class="dropdown-menu">
@@ -95,23 +97,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="name">New Time</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input type="time" class="input--style-5" id="input-new-time" name="newTime" value="11:01 AM"/>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-row p-t-20">
                         <label class="label label--block">Remarks</label>
                         <div class="p-t-15">
                             <label class="radio-container m-r-45">Scheduled
-                                <input type="radio" checked="checked" name="exist">
+                                <input type="radio" name="remarks" value="schedule">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="radio-container m-r-45">Boarding
-                                <input type="radio" name="exist">
+                                <input type="radio" name="remarks" value="boarding">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="radio-container m-r-45">Delayed
-                                <input type="radio" name="exist">
+                                <input type="radio" name="remarks" value="delayed">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="radio-container m-r-45">Cancelled
-                                <input type="radio" name="exist">
+                                <input type="radio" name="remarks" value="cancelled">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -135,37 +145,149 @@
 <!-- Bootstrap JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
+    // onload는 모든 요소가 DOM 트리 생성 후 리소스 모두 불러온 후 실행, DOMContentLoaded는 리소스 기다리지 않음
+    window.onload = function (){
+        // 유효성 검증을 위한 변수 선언
+        let isRadioChecked = false;
+        let isAirlineChecked = false;
+        let isFlightChecked = false;
+        let isDropdownCheckced = false;
+        let isTimeChecked = false;
+        let isRemarksChecked = false;
+
+        const inputAirline = document.getElementById("input-airline");
+        const inputFlight = document.getElementById("input-flight");
+
+        // airline input 이벤트 처리
+        inputAirline.addEventListener("input", function() {
+            const alphaRegex = /^[a-zA-Z]+$/;   // 알파벳만 허용하는 정규 표현식
+
+            if (inputAirline.value.trim() === "") {
+                inputAirline.style.backgroundColor = "#E5E5E5";
+            } else if (!alphaRegex.test(inputAirline.value.trim())) {
+                inputAirline.style.backgroundColor = "#ff4b5a"; // 입력값이 알파벳만으로 이뤄지지 않은 경우 배경색을 빨간색으로 변경
+            } else {
+                inputAirline.style.backgroundColor = "skyblue"; // 규칙에 맞는 경우
+                isAirlineChecked = true;
+            }
+        });
+
+        // flight의 input 이벤트처리
+        inputFlight.addEventListener("input", function() {
+            const numericRegex = /^\d{5}$/;     // 5자리 숫자만 허용하는 정규 표현식
+
+            if (inputFlight.value.trim() === "") {
+                inputFlight.style.backgroundColor = "#E5E5E5";
+            } else if (!numericRegex.test(inputFlight.value.trim())) {
+                inputFlight.style.backgroundColor = "#ff4b5a"; // 입력값이 알파벳만으로 이뤄지지 않은 경우 배경색을 빨간색으로 변경
+            } else {
+                inputFlight.style.backgroundColor = "skyblue"; // 규칙에 맞는 경우
+                isFlightChecked = true;
+            }
+        });
+
+        // country,gate 유효성 검사- 색상 변경
+        const dropdownItems = document.querySelectorAll(".dropdown-item");
+        dropdownItems.forEach(item => {
+            item.addEventListener("click", function() {
+                var dropdownButton = this.closest('.dropdown').querySelector('.dropdown-toggle');
+                var form = document.getElementById('form');
+                isDropdownCheckced = true;      // TODO country, gate 따로 해줘야함
+
+                if(dropdownButton.id == 'dropdown-country'){
+                    var countryInput = document.createElement('input');
+                    // countryInput.type = 'hidden';
+                    countryInput.name = 'destination';
+                    countryInput.value = dropdownButton.innerHTML;
+                    form.appendChild(countryInput);
+                }else if(dropdownButton.id == 'dropdown-alphabet'){
+                    var alphabetInput = document.createElement('input');
+                    alphabetInput.name = 'gateAlphabet';
+                    alphabetInput.value = dropdownButton.innerHTML;
+                    form.appendChild(alphabetInput);
+                }else if(dropdownButton.id == 'dropdown-number'){
+                    var numberInput = document.createElement('input');
+                    numberInput.name = 'gateNumber';
+                    numberInput.value = dropdownButton.innerHTML;
+                    form.appendChild(numberInput);
+                }else{}
+
+                dropdownButton.style.backgroundColor = "skyblue";
+                dropdownButton.style.border = "none";
+            });
+        });
+
+        // time 유효성 검사- 색상변경
+        const timeInput = document.getElementById("input-time");
+        // input-time에 change 이벤트 핸들러 추가
+        timeInput.addEventListener("change", function() {
+            if (timeInput.value !== "") {       // 입력값이 존재하면
+                timeInput.style.backgroundColor = "skyblue";
+                isTimeChecked = true;
+            }
+        });
+        const timeNew= document.getElementById("input-new-time");
+        timeNew.addEventListener("change", function() {
+            if (timeNew.value !== "") {         // 입력값이 존재하면
+                timeNew.style.backgroundColor = "skyblue";
+            }
+        });
+
+        // radio 유효성 검사
+        // radio의 span이 클릭되면 radio value에 checked 속성 추가 -> onlick 통한 방법은 다른 element 선택시 해제해야함
+        // input type radio로 select
+        const inputRemarks =
+
+        // function isChecked(ele){
+        //     // document.querySelectorAll('input[type="radio"]')
+        //     ele.setAttribute('checked', '');            // 다른 element 선택시 해제해야함 (onclick 이벤트로 수정)
+        //     isRadioChecked = true;
+        // }
+
+        // 전체적으로 입력 확인 -> onsubmit 활용 함수
+        function validateForm(){
+            // alert(isRadioChecked)
+            // if 전체입력이 true이면
+        }
+
+        // submit button 눌렀을때 이벤트 처리
+        // ADD 버튼 id를 liveAlertBtn으로 바꿔야함 + type=button 으로 바꿔야함
+        document.getElementById("liveAlertBtn").addEventListener("click", function () {
+            // method1. trigger 이용 (offical docs)
+            // const alertEle = new bootstrap.Toast(toastLiveExample);
+            // alert창 디스플레이
+            const alert = document.querySelector("#liveAlert");
+            alert.classList.remove("d-none");
+
+            var countdown = 3; // 3초 카운트다운 시작
+            const countdownElement = document.getElementById('countdown');
+
+            // 3초 설정 setTimeout(function () {  }, 3000);
+            // 1초마다 카운트다운 갱신
+            const countdownInterval = setInterval(function () {
+                countdown--;
+                countdownElement.innerText = `${countdown}`;
+                if (countdown <= 0) {
+                    // form 정보 전송
+                    document.getElementById('form').submit();
+                    // 카운트다운이 끝나면 메인 페이지로 이동하고 인터벌을 제거
+                    window.location.href = "index.html";
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+        });
+    }; // END OF "window.onload"
+
     // Dropdown 아이템을 클릭할 때 선택된 값을 해당 버튼에 표시
     document.querySelectorAll('.dropdown-item').forEach(function(item) {
         item.addEventListener('click', function() {
             var selectedValue = this.getAttribute('data-value');
             var dropdownButton = this.closest('.dropdown').querySelector('.dropdown-toggle');
+
             dropdownButton.textContent = selectedValue;
         });
     });
 
-    document.getElementById("liveAlertBtn").addEventListener("click", function () {
-        // method1. trigger 이용 (offical docs)
-        // const alertEle = new bootstrap.Toast(toastLiveExample);
-        // alert창 디스플레이
-        const alert = document.querySelector("#liveAlert");
-        alert.classList.remove("d-none");
-
-        var countdown = 3; // 3초 카운트다운 시작
-        const countdownElement = document.getElementById('countdown');
-
-        // 3초 설정 setTimeout(function () {  }, 3000);
-        // 1초마다 카운트다운 갱신
-        const countdownInterval = setInterval(function () {
-            countdown--;
-            countdownElement.innerText = `${countdown}`;
-            if (countdown <= 0) {
-                // 카운트다운이 끝나면 메인 페이지로 이동하고 인터벌을 제거
-                window.location.href = "index.html";
-                clearInterval(countdownInterval);
-            }
-        }, 1000);
-    });
 </script>
 </body>
 </html>
