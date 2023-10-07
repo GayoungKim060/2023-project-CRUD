@@ -200,16 +200,19 @@
                     countryInput.name = 'destination';
                     countryInput.value = dropdownButton.innerHTML;
                     form.appendChild(countryInput);
+                    countryInput.style.display = "none";
                 }else if(dropdownButton.id == 'dropdown-alphabet'){
                     var alphabetInput = document.createElement('input');
                     alphabetInput.name = 'gateAlphabet';
                     alphabetInput.value = dropdownButton.innerHTML;
                     form.appendChild(alphabetInput);
+                    alphabetInput.style.display = "none";
                 }else if(dropdownButton.id == 'dropdown-number'){
                     var numberInput = document.createElement('input');
                     numberInput.name = 'gateNumber';
                     numberInput.value = dropdownButton.innerHTML;
                     form.appendChild(numberInput);
+                    numberInput.style.display = "none";
                 }else{}
 
                 dropdownButton.style.backgroundColor = "skyblue";
