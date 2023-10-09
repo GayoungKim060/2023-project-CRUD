@@ -76,16 +76,45 @@ body{
     -ms-grid-row-align: center;
     align-self: center;
     width: 100%;
-    padding: 10px 25px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-/*
-.card-header.btn{
-    justify-content: end;
+.card .card-header input[type="search"]{
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 0 30px 0 14px;
+    height: 40px;
 }
-*/
+/* search 취소 버튼 삭제 */
+.card .card-header input[type="search"]::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.card .card-header input[type="search"]:focus{
+    outline: none;
+}
+/* clear 이미지 layout */
+.search-wrapper{
+    position: relative;
+    height: 16px;
+}
+.card .card-header img{
+    height: inherit;
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.card .card-header button{
+    border-width: 2px;
+}
+
 .card .card-header, .card .card-body, .card .card-footer {
     background-color: transparent;
     padding: 20px 25px;
@@ -179,8 +208,8 @@ table .text{
     margin-right: 14px;
 }
 
-.m-r-20 {
-    margin-right: 20px;
+.m-r-27 {
+    margin-right: 27px;
 }
 
 .m-b-55 {

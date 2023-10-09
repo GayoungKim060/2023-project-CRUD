@@ -28,9 +28,7 @@
             <li><a href="#" class="nav-link px-2 text-white">About</a></li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-        </form>
+
 
         <div class="text-end">
             <button type="button" class="btn btn-outline-light me-2">Login</button>
@@ -43,13 +41,21 @@
 <div class="col-12 col-sm-12 col-md-12">
     <div class="card">
         <div class="card-header">
-            <h2>Departures</h2>
-            <button type="button" class="btn btn-outline-dark me-2" onclick="location.href='add.html'">Add</button>
+            <div>
+                <h2 class="ms-2">Departures</h2>
+            </div>
+            <div class="d-flex justify-content-center align-items-baseline">
+                <div class="search-wrapper ">
+                    <input type="search" class="text-bg-white " placeholder="search" aria-label="Search">
+                    <img src="/src/main/resources/static/img/icon-search-delete.png" class="btn-clear">
+                </div>
+                <button type="button" class="btn btn-outline-dark me-2" onclick="location.href='add.html'">Add</button>
+            </div>
         </div>
         <div class="card-body">
             <div class="media-list position-relative">
                 <div class="table-responsive" id="project-team-scroll" tabindex="1" style="height: 400px; overflow: scroll; outline: none;">
-                    <table class="table table-hover table-xl mb-0">
+                    <table class="table table-hover table-xl">
                         <thead>
                             <tr>
                                 <th class="text-center">NO</th>
@@ -240,16 +246,37 @@
                 </div>
             </div>
         </div>
+        <!-- Pagination: paging, pager -->
+        <div class="d-flex justify-content-center">
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                    <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item" ><span class="page-link">2</span></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
-<br/>
+
 <!-- FOOTER -->
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top text-bg-dark">
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top text-bg-dark">
     <div class="col-md-4 d-flex align-items-center">
         <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
             <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
         </a>
-        <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2023 Company, Inc</span>
+        <div class="d-inline-block">
+            <span class="mb-3 mb-md-0 text-body-secondary">2023 Handong in Pohang, Republic of Korea, Univ </span>
+            <img src="/src/main/resources/static/img/icon-univ.png" style="width: 20px; background: white">
+        </div>
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
@@ -261,8 +288,13 @@
 
 <script>
 window.onload = function (){
-
-
+    // clear 이미지 클릭시 부모 내용 삭제
+    const btnClear = document.querySelectorAll('.btn-clear');
+    btnClear.forEach(function(btn){
+        btn.addEventListener('click', function(){
+            btn.parentNode.querySelector('input').value = "";
+        })
+    })
 };
 
 </script>
