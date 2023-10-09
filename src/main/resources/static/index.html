@@ -12,28 +12,26 @@
 </head>
 <body>
 <!-- HEADER -->
-<header class="p-3 text-bg-dark">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img src="/src/main/resources/static/img/logo-seagull.png" class="logo-seagull"/>
-            HAN Airport
-        </a>
-
+<header class="p-3 text-bg-dark d-flex flex-wrap justify-content-between align-item-center" >
+    <div id="menu-wrapper" class="">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            <li><a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="/src/main/resources/static/img/logo-seagull.png" class="logo-seagull"/>
+                HAN Airport
+            </a></li>
         </ul>
+    </div>
 
+    <div id="header-clock" class="d-flex ">
+        <div class="m-2 " id="date"></div>
+        <div class="m-2 " id="time"></div>
+        <div class="m-2 d-none " id="area">Seoul</div>
+    </div>
 
-
-        <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-light">Sign-up</button>
-        </div>
+    <div id="user-wrapper" class="text-end d-flex flex-row">
+        <button type="button" class="btn btn-light m-1"><img src="/src/main/resources/static/img/icon-settings.png"></button>
+        <button type="button" class="btn btn-light m-1"><img src="/src/main/resources/static/img/icon-alarm.png"></button>
+        <button type="button" class="btn btn-light m-1"><img src="/src/main/resources/static/img/icon-user.png"></button>
     </div>
 </header>
 
@@ -41,14 +39,21 @@
 <div class="col-12 col-sm-12 col-md-12">
     <div class="card">
         <div class="card-header">
-            <div>
+            <div class="d-flex flex-row">
                 <h2 class="ms-2">Departures</h2>
-            </div>
-            <div class="d-flex justify-content-center align-items-baseline">
                 <div class="search-wrapper ">
                     <input type="search" class="text-bg-white " placeholder="search" aria-label="Search">
                     <img src="/src/main/resources/static/img/icon-search-delete.png" class="btn-clear">
                 </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-baseline">
+                <div class="badge-wrapper">
+                    <span class="badge rounded-pill text-bg-primary fs-6">Boarding</span>
+                    <span class="badge rounded-pill text-bg-warning text-white fs-6">Delayed</span>
+                    <span class="badge rounded-pill text-bg-danger fs-6">Cancelled</span>
+                    <span class="badge rounded-pill text-bg-dark fs-6">Scheduled</span>
+                </div>
+
                 <button type="button" class="btn btn-outline-dark me-2" onclick="location.href='add.html'">Add</button>
             </div>
         </div>
@@ -295,6 +300,15 @@ window.onload = function (){
             btn.parentNode.querySelector('input').value = "";
         })
     })
+
+
+    window.setInterval(ut, 1000);
+    function ut() {
+        var d = new Date();
+        document.getElementById("time").innerHTML = d.toLocaleTimeString();
+        document.getElementById("date").innerHTML = d.toLocaleDateString();
+        document.getElementById("area").classList.remove('d-none');
+    }
 };
 
 </script>
